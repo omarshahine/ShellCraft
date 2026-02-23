@@ -26,6 +26,19 @@ ShellCraft reads your actual config files (`.zshrc`, `.gitconfig`, SSH configs, 
 
 Every section supports import/export and shows a save bar when you have unsaved changes.
 
+### Optional Tools
+
+ShellCraft manages these tools when they're installed. Each section shows a helpful empty state if the tool is missing — nothing is required.
+
+| Tool | Sections It Unlocks | Install |
+|------|-------------------|---------|
+| [Oh My Zsh](https://ohmyz.sh) | Themes, plugins, Oh My Zsh settings | `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` |
+| [Homebrew](https://brew.sh) | Package and cask management | `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` |
+| [Claude Code](https://claude.ai/download) | Settings, permissions, hooks, plugins, MCP servers | `npm install -g @anthropic-ai/claude-code` |
+| [Git](https://git-scm.com) | Git config and gitignore | Included with Xcode Command Line Tools |
+
+The core sections (Aliases, Functions, PATH, Environment, SSH, Secrets) work with just a default macOS install.
+
 ## Getting Started
 
 ### Prerequisites
@@ -70,4 +83,4 @@ See [CLAUDE.md](CLAUDE.md) for detailed architecture docs, conventions, and cont
 
 ## License
 
-Private project. Not currently open source.
+MIT — see [LICENSE](LICENSE) for details.
