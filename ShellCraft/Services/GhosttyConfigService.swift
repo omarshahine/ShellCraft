@@ -144,6 +144,36 @@ struct GhosttyConfigService {
         return lines.joined(separator: "\n")
     }
 
+    // MARK: - Reload
+
+    /// Checks if Ghostty is currently running.
+    static func isRunning() -> Bool {
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/pgrep")
+        process.arguments = ["-x", "ghostty"]
+        let pipe = Pipe()
+        process.standardOutput = pipe
+        process.standardError = Pipe()
+        try? process.run()
+        process.waitUntilExit()
+        return process.terminationStatus == 0
+    }
+
+    /// Sends SIGUSR1 to Ghostty to trigger a live config reload.
+    /// Returns true if the signal was sent successfully.
+    @discardableResult
+    static func reloadConfig() -> Bool {
+        guard isRunning() else { return false }
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/killall")
+        process.arguments = ["-USR1", "ghostty"]
+        process.standardOutput = Pipe()
+        process.standardError = Pipe()
+        try? process.run()
+        process.waitUntilExit()
+        return process.terminationStatus == 0
+    }
+
     // MARK: - Private
 
     private static func stripInlineComment(_ value: String) -> String {

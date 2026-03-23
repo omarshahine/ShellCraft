@@ -59,6 +59,9 @@ struct GhosttyThemeView: View {
                                 }
                             }
                             .labelsHidden()
+                            .onChange(of: viewModel.lightTheme) {
+                                viewModel.applyLive()
+                            }
                         }
 
                         VStack(alignment: .leading, spacing: 2) {
@@ -72,6 +75,9 @@ struct GhosttyThemeView: View {
                                 }
                             }
                             .labelsHidden()
+                            .onChange(of: viewModel.darkTheme) {
+                                viewModel.applyLive()
+                            }
                         }
 
                         Spacer()

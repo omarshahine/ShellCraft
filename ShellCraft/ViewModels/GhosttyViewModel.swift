@@ -31,6 +31,7 @@ final class GhosttyViewModel {
     private var rawLines: [String] = []
     private var originalConfig = GhosttyConfig()
     private var originalRawLines: [String] = []
+    private var isApplyingLive = false
 
     // Theme state
     var themeNames: [String] = []
@@ -89,13 +90,14 @@ final class GhosttyViewModel {
         }
     }
 
-    /// Sets the theme (single mode, not auto).
+    /// Sets the theme (single mode, not auto) and live-applies to Ghostty.
     func setTheme(_ name: String) {
         if useAutoTheme {
             darkTheme = name
         } else {
             config.setValue(for: "theme", value: name)
         }
+        applyLive()
     }
 
     private func parseAutoTheme() -> (light: String, dark: String) {
@@ -272,8 +274,28 @@ final class GhosttyViewModel {
             rawLines = result.rawLines
             originalConfig = config
             originalRawLines = rawLines
+            GhosttyConfigService.reloadConfig()
         } catch {
             self.error = "Failed to save Ghostty config: \(error.localizedDescription)"
+        }
+    }
+
+    /// Saves and reloads Ghostty without updating the "original" snapshot,
+    /// so the SaveBar still shows unsaved changes relative to the last explicit Save.
+    func applyLive() {
+        guard !isApplyingLive else { return }
+        isApplyingLive = true
+        defer { isApplyingLive = false }
+
+        do {
+            try GhosttyConfigService.write(config: config, rawLines: rawLines, path: GhosttyConfigService.configPath)
+            // Re-read rawLines to stay in sync with disk
+            let result = try GhosttyConfigService.parse()
+            config = result.config
+            rawLines = result.rawLines
+            GhosttyConfigService.reloadConfig()
+        } catch {
+            self.error = "Failed to apply config: \(error.localizedDescription)"
         }
     }
 
@@ -282,6 +304,9 @@ final class GhosttyViewModel {
     func discard() {
         config = originalConfig
         rawLines = originalRawLines
+        // Write the original config back to disk and reload Ghostty
+        try? GhosttyConfigService.write(config: config, rawLines: rawLines, path: GhosttyConfigService.configPath)
+        GhosttyConfigService.reloadConfig()
     }
 
     // MARK: - Theme Loading
