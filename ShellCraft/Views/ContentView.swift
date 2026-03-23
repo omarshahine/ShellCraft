@@ -48,6 +48,8 @@ struct ContentView: View {
             CustomToolsView()
         case .homebrew:
             HomebrewView()
+        case .ghostty:
+            GhosttySettingsView()
         }
     }
 }

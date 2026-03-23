@@ -17,6 +17,7 @@ struct SSHConfigView: View {
                 }
             }
             .pickerStyle(.segmented)
+            .labelsHidden()
             .padding(.horizontal)
             .padding(.top, 8)
             .frame(maxWidth: 250)

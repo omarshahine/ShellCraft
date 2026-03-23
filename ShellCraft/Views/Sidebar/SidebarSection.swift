@@ -12,6 +12,7 @@ enum SidebarSection: String, CaseIterable, Identifiable, Hashable {
     case claudeSettings
     case customTools
     case homebrew
+    case ghostty
 
     var id: String { rawValue }
 
@@ -28,6 +29,7 @@ enum SidebarSection: String, CaseIterable, Identifiable, Hashable {
         case .claudeSettings: "Claude Code"
         case .customTools: "Custom Tools"
         case .homebrew: "Homebrew"
+        case .ghostty: "Ghostty"
         }
     }
 
@@ -44,6 +46,7 @@ enum SidebarSection: String, CaseIterable, Identifiable, Hashable {
         case .claudeSettings: "brain"
         case .customTools: "wrench.and.screwdriver"
         case .homebrew: "mug"
+        case .ghostty: "rectangle.on.rectangle"
         }
     }
 
@@ -52,7 +55,7 @@ enum SidebarSection: String, CaseIterable, Identifiable, Hashable {
         case .aliases, .functions, .ohMyZsh, .path, .envVars: .shell
         case .secrets, .sshConfig: .security
         case .gitConfig, .claudeSettings: .developer
-        case .customTools, .homebrew: .tools
+        case .customTools, .homebrew, .ghostty: .tools
         }
     }
 }
