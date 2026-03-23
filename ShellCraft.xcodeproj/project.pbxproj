@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 90;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		09A287DE24E9E2E10D669C1C /* HomebrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8589E7E294600D8E7969261 /* HomebrewView.swift */; };
 		0B8E79F6C214149504095083 /* PathManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2245C8447181FA14277987 /* PathManagerViewModel.swift */; };
 		0D9966F418D859FFE0DE8BE3 /* SSHConfigParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0AEE23468775E4ACD43D50 /* SSHConfigParser.swift */; };
+		0EAB2EA4D2A4F93972A881FA /* GhosttyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3A2371F4391DB0CD382FCF /* GhosttyConfig.swift */; };
 		1243384588903E1340109532 /* ClaudeHooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0701AED38205FEABDC875E8 /* ClaudeHooksView.swift */; };
 		128B6F195F90186D2794E13A /* SecretsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBB4CE144CCD499FC175DD0 /* SecretsViewModel.swift */; };
 		154530265562A688FF9447C4 /* CustomTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F499EA0A1C58182594C00F /* CustomTool.swift */; };
@@ -29,6 +30,9 @@
 		297D53F87D368FEBDF9A49C8 /* ClaudeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBE65BFAE393AC6B2F4B2C0 /* ClaudeSettingsView.swift */; };
 		29FAD2A4528D82C7D3B864F4 /* SourceFileLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD010981DE2BEE508751245 /* SourceFileLabel.swift */; };
 		3898CC4D37FEFC0FE10D9D79 /* PasswordSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF327F73F0846E416ED845 /* PasswordSheet.swift */; };
+		3A553D7A65C16FEF847D9197 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5A21390FB14A7AF5EE7F88 /* Color+Hex.swift */; };
+		3CCE2BB97AB6D5B22AC1F5BF /* GhosttySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D020F4AFB85A44901FDF3C /* GhosttySettingsView.swift */; };
+		406C56B6B6E19BA48FAB0660 /* GhosttyConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591004C70EE35258B75A2D58 /* GhosttyConfigService.swift */; };
 		4335D27005AD305A284480AF /* ClaudeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C916C68928552F26B23CEA33 /* ClaudeSettings.swift */; };
 		43B936C4E4C569FBA72F5748 /* CodeEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACF420627CC5D323D0F4D76 /* CodeEditorView.swift */; };
 		43EB5A1A37090D2BF3AF1804 /* ClaudePluginsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A739F4F484E09FC287BBBA /* ClaudePluginsViewModel.swift */; };
@@ -36,6 +40,7 @@
 		4887B566B957F8F4F30E57D5 /* EnvVarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21120935013D53F948C0A052 /* EnvVarsView.swift */; };
 		496C33B5BF41C15E933B9104 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D66539A4D4291D42D43D78 /* KeychainService.swift */; };
 		4C238B12F70943150D7BEC00 /* ShellConfigParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EB04921D1F536B38E21A26 /* ShellConfigParserTests.swift */; };
+		4DE22422C077CFBFFE971356 /* GhosttyThemePreviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AFB84C4F7804C92A37C7AB /* GhosttyThemePreviewCard.swift */; };
 		4E79B038BFE27A9C7DD89D62 /* SSHConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1511FD9C3CFB37C3A7FF6ACB /* SSHConfigViewModel.swift */; };
 		4E80125D7B0D81BAE891C2EF /* ShellAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE53BC55B67888037E1FE6 /* ShellAlias.swift */; };
 		503785E7DECC2F1D8FD62841 /* ClaudePermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837167839FD92DA652A22654 /* ClaudePermission.swift */; };
@@ -43,13 +48,16 @@
 		5452FC0B49D0705C97E8C06D /* ImportExportToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01ECCF4CF028C965E1DC77 /* ImportExportToolbar.swift */; };
 		55A4C04FBDCC04760B9839A6 /* ClaudeSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1ADEF264D125481B9799D0 /* ClaudeSettingsService.swift */; };
 		56CA384B61F53E0656E40427 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06EBC3330B8BD0ED8C5E285 /* SidebarView.swift */; };
+		57E074EB8CC4B71F475ABD5B /* GhosttyGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690152ADE458DCC1D0FB5599 /* GhosttyGeneralView.swift */; };
 		58C7533DBB787089758B4F35 /* RevealInFinderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A8539854DE580F5C8B766D /* RevealInFinderButton.swift */; };
 		5BFA15D4868B5C0797344ABD /* EncryptedImportSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC7DB9C380326C340E08090 /* EncryptedImportSheet.swift */; };
 		5C90A5056DCF0B491955CC38 /* SearchableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD449C23F274C12E31650540 /* SearchableList.swift */; };
 		5DAD74E9DE1488D7A83D4EDF /* FileIOService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F70DF0EF39D8A80CF2970C7 /* FileIOService.swift */; };
 		644A7A93A8D1E0D2AEBDC2CD /* MCPServerEditorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5BF3C783F7D1E9131BBE76 /* MCPServerEditorSheet.swift */; };
 		6524DCCC872A55750E99EF40 /* ShellLineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D2C4A5D6B5622A3F7174BC /* ShellLineParser.swift */; };
+		67BD61AE1DFAA9E65DABDC41 /* GhosttyAppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEE904AED5788EB544A103 /* GhosttyAppearanceView.swift */; };
 		68DE6BA48B29F5BAB4FCCC29 /* CustomToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8652F5448111ABC8C1FB3C3 /* CustomToolsView.swift */; };
+		703F59CDC3996C1B17DB142C /* GhosttyThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681F03E5192EBE79F91AFFD0 /* GhosttyThemeView.swift */; };
 		715D000F5A4EAD3194CEC92E /* ShellAliasesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3CEB7458B08849C4A927E7 /* ShellAliasesViewModel.swift */; };
 		733389179457497789D35AF9 /* ClaudeHooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851785E0EE04A78E2A326591 /* ClaudeHooksViewModel.swift */; };
 		75DF8871683715C3EFD6815E /* HomebrewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB626D64999FCFED99EF8EE5 /* HomebrewService.swift */; };
@@ -84,11 +92,13 @@
 		AD7F82E798D92D1E26560C93 /* OhMyZshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA00A88EB2B540D7A8C090 /* OhMyZshService.swift */; };
 		AD9A23AAE3D13FCBEDAE4F5C /* SSHHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCEC82A139BB079960379 /* SSHHost.swift */; };
 		ADCBE14F63C7F6959D4099E4 /* ImportExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122D2F205CCF2B525AD162C4 /* ImportExportService.swift */; };
+		AEFA1E4C6401AC5D58191875 /* GhosttyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145026CAD87429CF24AFA72A /* GhosttyViewModel.swift */; };
 		B55866C05019D71C4B3B1E64 /* ShellFunctionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B97FEF32798774FA107E744 /* ShellFunctionsView.swift */; };
 		C3961BB2047A44281387DBDD /* OhMyZshPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62D601C0E6615F9F1E2B90 /* OhMyZshPlugin.swift */; };
 		C9B484312653B7326108C226 /* ClaudePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FA862D1F23B98EBCDABD4 /* ClaudePlugin.swift */; };
 		CA84CA22ED138924BA8B4671 /* OhMyZshSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BA173ECF4703EB8128D05 /* OhMyZshSetting.swift */; };
 		CB2D4A8536D8054F096392ED /* KeychainSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E652EBFFF942C18E2FA9B4 /* KeychainSecret.swift */; };
+		CBB822E8EBD798B6058083A9 /* GhosttyThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C82CC69D72378270D16DE /* GhosttyThemeService.swift */; };
 		D47AD7B74E1DA6449272B37C /* ClaudeGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FC6F75FE8A920A2500F3E2 /* ClaudeGeneralView.swift */; };
 		D6334F32BC38D2CED362ED56 /* HomebrewPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AFA4A85849C5A07D8F8085 /* HomebrewPackage.swift */; };
 		D6D34C258BC61B8517AA816F /* EncryptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26251EFB90818D93E7573A /* EncryptionService.swift */; };
@@ -133,6 +143,7 @@
 		122D2F205CCF2B525AD162C4 /* ImportExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportService.swift; sourceTree = "<group>"; };
 		123325BAE76D5323992468AD /* OhMyZshViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhMyZshViewModel.swift; sourceTree = "<group>"; };
 		126C4CFA7D0FF8C6064AEB22 /* OhMyZshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhMyZshView.swift; sourceTree = "<group>"; };
+		145026CAD87429CF24AFA72A /* GhosttyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyViewModel.swift; sourceTree = "<group>"; };
 		1511FD9C3CFB37C3A7FF6ACB /* SSHConfigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHConfigViewModel.swift; sourceTree = "<group>"; };
 		16FC6F75FE8A920A2500F3E2 /* ClaudeGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeGeneralView.swift; sourceTree = "<group>"; };
 		17A4ED9855674778DF7080FA /* HookEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookEditorSheet.swift; sourceTree = "<group>"; };
@@ -146,6 +157,7 @@
 		29E8CF5CDF984D9B99DD2D99 /* GitConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitConfigService.swift; sourceTree = "<group>"; };
 		2A358D363CBB4016E7DDC31F /* SetupScriptGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScriptGenerator.swift; sourceTree = "<group>"; };
 		2ACF420627CC5D323D0F4D76 /* CodeEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditorView.swift; sourceTree = "<group>"; };
+		2CDEE904AED5788EB544A103 /* GhosttyAppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyAppearanceView.swift; sourceTree = "<group>"; };
 		2D1ADEF264D125481B9799D0 /* ClaudeSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeSettingsService.swift; sourceTree = "<group>"; };
 		2FFFD4BB65A9E7D9B0F416F6 /* SaveBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveBar.swift; sourceTree = "<group>"; };
 		341146D17DFE26FF39562CC7 /* MCPServersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPServersView.swift; sourceTree = "<group>"; };
@@ -161,13 +173,18 @@
 		53B8CC5810FF0F12C7C2C042 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		57A739F4F484E09FC287BBBA /* ClaudePluginsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudePluginsViewModel.swift; sourceTree = "<group>"; };
 		58271450E6CAE6D851045F4E /* ShellCraftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShellCraftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		591004C70EE35258B75A2D58 /* GhosttyConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyConfigService.swift; sourceTree = "<group>"; };
+		597C82CC69D72378270D16DE /* GhosttyThemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyThemeService.swift; sourceTree = "<group>"; };
 		5B055667C0A148F34016DE79 /* GitIgnoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitIgnoreView.swift; sourceTree = "<group>"; };
 		5B97FEF32798774FA107E744 /* ShellFunctionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellFunctionsView.swift; sourceTree = "<group>"; };
 		5C2245C8447181FA14277987 /* PathManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathManagerViewModel.swift; sourceTree = "<group>"; };
 		60122B9089CACE9124C59AFD /* ClaudePermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudePermissionsViewModel.swift; sourceTree = "<group>"; };
 		62A8539854DE580F5C8B766D /* RevealInFinderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealInFinderButton.swift; sourceTree = "<group>"; };
+		681F03E5192EBE79F91AFFD0 /* GhosttyThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyThemeView.swift; sourceTree = "<group>"; };
+		690152ADE458DCC1D0FB5599 /* GhosttyGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyGeneralView.swift; sourceTree = "<group>"; };
 		69595855D46D72D7A15B709D /* ShellAliasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellAliasesView.swift; sourceTree = "<group>"; };
 		6C72D977B44794B281E7AB47 /* FileWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWatcher.swift; sourceTree = "<group>"; };
+		6F3A2371F4391DB0CD382FCF /* GhosttyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyConfig.swift; sourceTree = "<group>"; };
 		6F4EDCF85286B3D0332C5FB3 /* ShellConfigWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellConfigWriter.swift; sourceTree = "<group>"; };
 		71505A4479DBD16CB6D32CA9 /* EnvVarsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVarsViewModel.swift; sourceTree = "<group>"; };
 		722C2839F9535AF5D0191642 /* EnvironmentVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariable.swift; sourceTree = "<group>"; };
@@ -179,6 +196,7 @@
 		851785E0EE04A78E2A326591 /* ClaudeHooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeHooksViewModel.swift; sourceTree = "<group>"; };
 		85A6028A9D0B923E3767AE6C /* OhMyZshPluginsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhMyZshPluginsView.swift; sourceTree = "<group>"; };
 		87E7F87FA00E7C46345A42E4 /* ClaudePluginsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudePluginsView.swift; sourceTree = "<group>"; };
+		89AFB84C4F7804C92A37C7AB /* GhosttyThemePreviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyThemePreviewCard.swift; sourceTree = "<group>"; };
 		8AA43F11868EB1409F77436A /* GitConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitConfigView.swift; sourceTree = "<group>"; };
 		8B5BF3C783F7D1E9131BBE76 /* MCPServerEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPServerEditorSheet.swift; sourceTree = "<group>"; };
 		8C0AEE23468775E4ACD43D50 /* SSHConfigParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHConfigParser.swift; sourceTree = "<group>"; };
@@ -189,6 +207,7 @@
 		9D3454EF0C0C70BE4DBA1FE6 /* EnvVarEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVarEditorSheet.swift; sourceTree = "<group>"; };
 		9F70DF0EF39D8A80CF2970C7 /* FileIOService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIOService.swift; sourceTree = "<group>"; };
 		A06EBC3330B8BD0ED8C5E285 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		A5D020F4AFB85A44901FDF3C /* GhosttySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttySettingsView.swift; sourceTree = "<group>"; };
 		AAB04E37227E302F1C6B8125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABA4189BE71AA511A56D0884 /* ShellCraft.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = ShellCraft.icon; sourceTree = "<group>"; };
 		ABCA00A88EB2B540D7A8C090 /* OhMyZshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhMyZshService.swift; sourceTree = "<group>"; };
@@ -213,6 +232,7 @@
 		D8FF16890DC518287683C510 /* SetupScriptSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupScriptSheet.swift; sourceTree = "<group>"; };
 		DB626D64999FCFED99EF8EE5 /* HomebrewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomebrewService.swift; sourceTree = "<group>"; };
 		DB6398A8FB9937B9F882F8BA /* SecretRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretRow.swift; sourceTree = "<group>"; };
+		DC5A21390FB14A7AF5EE7F88 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		E10D6FCEA572B991A797374D /* SSHKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHKey.swift; sourceTree = "<group>"; };
 		E3D66539A4D4291D42D43D78 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		E442B720F888F432F7DC11B7 /* PathEntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathEntryRow.swift; sourceTree = "<group>"; };
@@ -281,6 +301,7 @@
 			children = (
 				A8A771D593BE2179B276335D /* Claude */,
 				E946E4D55A1728065883353F /* Environment */,
+				E8A6074A9572F847F04FCD48 /* Ghostty */,
 				54B4F6311D0E10AC85E4C47F /* Git */,
 				D9E9E1A11CA06A5F8AE25CA6 /* Homebrew */,
 				A8CBC6F737DE09BB56221897 /* OhMyZsh */,
@@ -324,6 +345,7 @@
 				8454261752A51F6B54691460 /* ClaudeSettingsViewModel.swift */,
 				916D564647E8575CC7E95271 /* CustomToolsViewModel.swift */,
 				71505A4479DBD16CB6D32CA9 /* EnvVarsViewModel.swift */,
+				145026CAD87429CF24AFA72A /* GhosttyViewModel.swift */,
 				80C012184371F0D0B549EEDD /* GitConfigViewModel.swift */,
 				283EA0F700CF81A76F9B2160 /* HomebrewViewModel.swift */,
 				F9D76CEEE44EA5B5EE4E7DAA /* MCPServersViewModel.swift */,
@@ -359,6 +381,7 @@
 		77CBA5B0E9229300CBDB05F5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DC5A21390FB14A7AF5EE7F88 /* Color+Hex.swift */,
 				D07825D1C0719B586B0A294F /* String+Shell.swift */,
 				E690D57F3F6D4B6214AEF9B3 /* URL+Home.swift */,
 			);
@@ -425,6 +448,7 @@
 				C916C68928552F26B23CEA33 /* ClaudeSettings.swift */,
 				10F499EA0A1C58182594C00F /* CustomTool.swift */,
 				722C2839F9535AF5D0191642 /* EnvironmentVariable.swift */,
+				6F3A2371F4391DB0CD382FCF /* GhosttyConfig.swift */,
 				CD3CAE67168FE994733AE184 /* GitConfig.swift */,
 				C5AFA4A85849C5A07D8F8085 /* HomebrewPackage.swift */,
 				24E652EBFFF942C18E2FA9B4 /* KeychainSecret.swift */,
@@ -448,6 +472,8 @@
 				2D1ADEF264D125481B9799D0 /* ClaudeSettingsService.swift */,
 				0C26251EFB90818D93E7573A /* EncryptionService.swift */,
 				9F70DF0EF39D8A80CF2970C7 /* FileIOService.swift */,
+				591004C70EE35258B75A2D58 /* GhosttyConfigService.swift */,
+				597C82CC69D72378270D16DE /* GhosttyThemeService.swift */,
 				29E8CF5CDF984D9B99DD2D99 /* GitConfigService.swift */,
 				DB626D64999FCFED99EF8EE5 /* HomebrewService.swift */,
 				122D2F205CCF2B525AD162C4 /* ImportExportService.swift */,
@@ -477,6 +503,18 @@
 				A06EBC3330B8BD0ED8C5E285 /* SidebarView.swift */,
 			);
 			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		E8A6074A9572F847F04FCD48 /* Ghostty */ = {
+			isa = PBXGroup;
+			children = (
+				2CDEE904AED5788EB544A103 /* GhosttyAppearanceView.swift */,
+				690152ADE458DCC1D0FB5599 /* GhosttyGeneralView.swift */,
+				A5D020F4AFB85A44901FDF3C /* GhosttySettingsView.swift */,
+				89AFB84C4F7804C92A37C7AB /* GhosttyThemePreviewCard.swift */,
+				681F03E5192EBE79F91AFFD0 /* GhosttyThemeView.swift */,
+			);
+			path = Ghostty;
 			sourceTree = "<group>";
 		};
 		E946E4D55A1728065883353F /* Environment */ = {
@@ -540,7 +578,11 @@
 			);
 			buildRules = (
 			);
+			dependencies = (
+			);
 			name = ShellCraft;
+			packageProductDependencies = (
+			);
 			productName = ShellCraft;
 			productReference = B74FA53E1723D0FE659BC032 /* ShellCraft.app */;
 			productType = "com.apple.product-type.application";
@@ -557,6 +599,8 @@
 				035A3D305B8117F0CACCC688 /* PBXTargetDependency */,
 			);
 			name = ShellCraftTests;
+			packageProductDependencies = (
+			);
 			productName = ShellCraftTests;
 			productReference = 58271450E6CAE6D851045F4E /* ShellCraftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -571,11 +615,13 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					75E21C0BF1D89539B341C832 = {
+						DevelopmentTeam = N9DRSTM2U6;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 61077A9ABA9F457CDB48396B /* Build configuration list for PBXProject "ShellCraft" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -584,7 +630,7 @@
 			);
 			mainGroup = 0FCD02C4AD128BB91FF63CD9;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 90;
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -597,24 +643,29 @@
 /* Begin PBXResourcesBuildPhase section */
 		01B53F523AE90A167555D4B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
 			files = (
 				F79424A5F25FA39B05E04751 /* Assets.xcassets in Resources */,
 				18D0F6A4DC1FA8D00709B2F7 /* ShellCraft.icon in Resources */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2915AC4DA7F385E00FAF5ACD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
 			files = (
 				A5661251F6D67943ADBA47DB /* ClaudeSettingsServiceTests.swift in Sources */,
 				DC411C9658856D85049C3E89 /* PathValidatorTests.swift in Sources */,
 				4C238B12F70943150D7BEC00 /* ShellConfigParserTests.swift in Sources */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FCCEE7E1735A0536C48AB9D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
 			files = (
 				AA9F61885DEF92CCBA723BA8 /* AliasEditorSheet.swift in Sources */,
 				085D987ECADC1509C879C8C7 /* AppState.swift in Sources */,
@@ -634,6 +685,7 @@
 				297D53F87D368FEBDF9A49C8 /* ClaudeSettingsView.swift in Sources */,
 				D7A7AA7284D1E76D4B5B2B8D /* ClaudeSettingsViewModel.swift in Sources */,
 				43B936C4E4C569FBA72F5748 /* CodeEditorView.swift in Sources */,
+				3A553D7A65C16FEF847D9197 /* Color+Hex.swift in Sources */,
 				22D5152099740FFE4E782EC2 /* ContentView.swift in Sources */,
 				154530265562A688FF9447C4 /* CustomTool.swift in Sources */,
 				68DE6BA48B29F5BAB4FCCC29 /* CustomToolsView.swift in Sources */,
@@ -647,6 +699,15 @@
 				5DAD74E9DE1488D7A83D4EDF /* FileIOService.swift in Sources */,
 				9FC1048345DF3433D97CFEF1 /* FileWatcher.swift in Sources */,
 				D8052263139561A588C4947D /* FunctionEditorSheet.swift in Sources */,
+				67BD61AE1DFAA9E65DABDC41 /* GhosttyAppearanceView.swift in Sources */,
+				0EAB2EA4D2A4F93972A881FA /* GhosttyConfig.swift in Sources */,
+				406C56B6B6E19BA48FAB0660 /* GhosttyConfigService.swift in Sources */,
+				57E074EB8CC4B71F475ABD5B /* GhosttyGeneralView.swift in Sources */,
+				3CCE2BB97AB6D5B22AC1F5BF /* GhosttySettingsView.swift in Sources */,
+				4DE22422C077CFBFFE971356 /* GhosttyThemePreviewCard.swift in Sources */,
+				CBB822E8EBD798B6058083A9 /* GhosttyThemeService.swift in Sources */,
+				703F59CDC3996C1B17DB142C /* GhosttyThemeView.swift in Sources */,
+				AEFA1E4C6401AC5D58191875 /* GhosttyViewModel.swift in Sources */,
 				E52A4766426F2517905AF232 /* GitConfig.swift in Sources */,
 				97D682FE45A620572AFA8134 /* GitConfigService.swift in Sources */,
 				A2A221DF9BA1D319A16ACD52 /* GitConfigView.swift in Sources */,
@@ -715,6 +776,7 @@
 				17216934EEA3607EE9DC94A1 /* String+Shell.swift in Sources */,
 				A5038079417050B6E996D361 /* URL+Home.swift in Sources */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -727,7 +789,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		34B2597C0FA4AC3130F347B5 /* Release configuration for PBXProject "ShellCraft" */ = {
+		34B2597C0FA4AC3130F347B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -785,7 +847,7 @@
 			};
 			name = Release;
 		};
-		4FE01991F523E737FE87279C /* Release configuration for PBXNativeTarget "ShellCraftTests" */ = {
+		4FE01991F523E737FE87279C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -802,12 +864,11 @@
 			};
 			name = Release;
 		};
-		8AE54BCE243F0648DBA4EEA7 /* Debug configuration for PBXNativeTarget "ShellCraft" */ = {
+		8AE54BCE243F0648DBA4EEA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShellCraft;
 				CODE_SIGN_ENTITLEMENTS = ShellCraft/ShellCraft.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -827,7 +888,7 @@
 			};
 			name = Debug;
 		};
-		95DD1DFF2A50B7667B4D8AE5 /* Debug configuration for PBXNativeTarget "ShellCraftTests" */ = {
+		95DD1DFF2A50B7667B4D8AE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -844,7 +905,7 @@
 			};
 			name = Debug;
 		};
-		D3F2192A3D452EE2CD677843 /* Debug configuration for PBXProject "ShellCraft" */ = {
+		D3F2192A3D452EE2CD677843 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -909,12 +970,11 @@
 			};
 			name = Debug;
 		};
-		E575ED0E41A21835734AF943 /* Release configuration for PBXNativeTarget "ShellCraft" */ = {
+		E575ED0E41A21835734AF943 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShellCraft;
 				CODE_SIGN_ENTITLEMENTS = ShellCraft/ShellCraft.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -940,25 +1000,28 @@
 		61077A9ABA9F457CDB48396B /* Build configuration list for PBXProject "ShellCraft" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D3F2192A3D452EE2CD677843 /* Debug configuration for PBXProject "ShellCraft" */,
-				34B2597C0FA4AC3130F347B5 /* Release configuration for PBXProject "ShellCraft" */,
+				D3F2192A3D452EE2CD677843 /* Debug */,
+				34B2597C0FA4AC3130F347B5 /* Release */,
 			);
+			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 		C1AC2F3F15DE17955724EED8 /* Build configuration list for PBXNativeTarget "ShellCraftTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				95DD1DFF2A50B7667B4D8AE5 /* Debug configuration for PBXNativeTarget "ShellCraftTests" */,
-				4FE01991F523E737FE87279C /* Release configuration for PBXNativeTarget "ShellCraftTests" */,
+				95DD1DFF2A50B7667B4D8AE5 /* Debug */,
+				4FE01991F523E737FE87279C /* Release */,
 			);
+			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 		EAD167F63B279EB4F28B6FA0 /* Build configuration list for PBXNativeTarget "ShellCraft" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8AE54BCE243F0648DBA4EEA7 /* Debug configuration for PBXNativeTarget "ShellCraft" */,
-				E575ED0E41A21835734AF943 /* Release configuration for PBXNativeTarget "ShellCraft" */,
+				8AE54BCE243F0648DBA4EEA7 /* Debug */,
+				E575ED0E41A21835734AF943 /* Release */,
 			);
+			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */

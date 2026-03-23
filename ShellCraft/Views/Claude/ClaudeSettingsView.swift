@@ -14,6 +14,7 @@ struct ClaudeSettingsView: View {
                 }
             }
             .pickerStyle(.segmented)
+            .labelsHidden()
             .padding(.horizontal)
             .padding(.top, 8)
 
