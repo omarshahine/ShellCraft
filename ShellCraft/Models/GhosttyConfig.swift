@@ -8,14 +8,6 @@ enum GhosttyTab: String, CaseIterable, Identifiable {
     case general = "General"
 
     var id: String { rawValue }
-
-    var icon: String {
-        switch self {
-        case .theme: "paintpalette"
-        case .appearance: "textformat.size"
-        case .general: "gear"
-        }
-    }
 }
 
 // MARK: - Config Entry

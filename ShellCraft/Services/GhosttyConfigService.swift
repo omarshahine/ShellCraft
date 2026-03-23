@@ -5,7 +5,6 @@ import Foundation
 struct GhosttyConfigService {
 
     static let configPath = "~/.config/ghostty/config"
-    static let configDirectory = "~/.config/ghostty"
     static let autoThemePath = "~/.config/ghostty/auto/theme.ghostty"
 
     // MARK: - Detection

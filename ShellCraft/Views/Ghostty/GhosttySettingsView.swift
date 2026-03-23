@@ -125,16 +125,7 @@ struct GhosttySettingsView: View {
             title: "Import Ghostty Config"
         ) else { return }
 
-        let preview = viewModel.previewImport(result.content)
         pendingImportContent = result.content
-        importPreview = ImportPreview(
-            fileName: result.fileName,
-            sectionName: preview.sectionName,
-            isReplace: preview.isReplace,
-            newItems: preview.newItems,
-            updatedItems: preview.updatedItems,
-            unchangedCount: preview.unchangedCount,
-            warnings: preview.warnings
-        )
+        importPreview = viewModel.previewImport(result.content)
     }
 }

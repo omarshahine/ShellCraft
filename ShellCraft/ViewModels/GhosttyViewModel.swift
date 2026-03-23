@@ -28,7 +28,7 @@ final class GhosttyViewModel {
 
     // Config state
     var config = GhosttyConfig()
-    var rawLines: [String] = []
+    private var rawLines: [String] = []
     private var originalConfig = GhosttyConfig()
     private var originalRawLines: [String] = []
 
@@ -290,7 +290,7 @@ final class GhosttyViewModel {
         isLoadingThemes = true
         themeNames = GhosttyThemeService.loadThemeNames()
 
-        let themes = await Task.detached {
+        let themes = await Task.detached { @Sendable in
             GhosttyThemeService.parseAllThemes()
         }.value
 

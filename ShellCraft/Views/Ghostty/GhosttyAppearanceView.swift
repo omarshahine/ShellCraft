@@ -6,6 +6,7 @@ struct GhosttyAppearanceView: View {
     @Bindable var viewModel: GhosttyViewModel
     @State private var fontSearch = ""
     @State private var showAllFonts = false
+    @State private var cachedMonoFonts: [String] = []
 
     /// Popular coding fonts, checked against what's actually installed.
     private static let recommendedFamilies: [String] = [
@@ -48,28 +49,19 @@ struct GhosttyAppearanceView: View {
         "Courier New",
     ]
 
-    /// All monospace fonts on the system.
-    private var allMonospaceFonts: [String] {
-        let fm = NSFontManager.shared
-        return fm.availableFontFamilies.filter { family in
-            guard let font = NSFont(name: family, size: 13) else { return false }
-            return font.isFixedPitch || fm.traits(of: font).contains(.fixedPitchFontMask)
-        }.sorted { $0.localizedCaseInsensitiveCompare($1) == .orderedAscending }
-    }
-
     /// Recommended fonts that are actually installed.
     private var installedRecommended: [String] {
-        let installed = Set(allMonospaceFonts)
+        let installed = Set(cachedMonoFonts)
         return Self.recommendedFamilies.filter { installed.contains($0) }
     }
 
     /// All other monospace fonts not in the recommended list.
     private var otherFonts: [String] {
         let recommended = Set(Self.recommendedFamilies)
-        return allMonospaceFonts.filter { !recommended.contains($0) }
+        return cachedMonoFonts.filter { !recommended.contains($0) }
     }
 
-    /// Whether the current font is not in the recommended list (so we always show it).
+    /// Whether the current font is not in the recommended list.
     private var currentFontIsOther: Bool {
         let family = viewModel.fontFamily
         guard !family.isEmpty else { return false }
@@ -79,7 +71,7 @@ struct GhosttyAppearanceView: View {
     /// Fonts filtered by search text.
     private var searchResults: [String] {
         let query = fontSearch.lowercased()
-        return allMonospaceFonts.filter { $0.lowercased().contains(query) }
+        return cachedMonoFonts.filter { $0.lowercased().contains(query) }
     }
 
     var body: some View {
@@ -210,6 +202,21 @@ struct GhosttyAppearanceView: View {
             }
         }
         .formStyle(.grouped)
+        .onAppear {
+            if cachedMonoFonts.isEmpty {
+                cachedMonoFonts = Self.loadMonospaceFonts()
+            }
+        }
+    }
+
+    // MARK: - Font Discovery
+
+    private static func loadMonospaceFonts() -> [String] {
+        let fm = NSFontManager.shared
+        return fm.availableFontFamilies.filter { family in
+            guard let font = NSFont(name: family, size: 13) else { return false }
+            return font.isFixedPitch || fm.traits(of: font).contains(.fixedPitchFontMask)
+        }.sorted { $0.localizedCaseInsensitiveCompare($1) == .orderedAscending }
     }
 
     // MARK: - Subviews
