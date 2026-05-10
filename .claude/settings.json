@@ -9,6 +9,15 @@
     "plugin-dev@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "swiftui-skills@dpearson2699/swift-ios-skills": true,
+    "swift-core-skills@dpearson2699/swift-ios-skills": true,
+    "ios-app-framework-skills@dpearson2699/swift-ios-skills": true,
+    "ios-data-framework-skills@dpearson2699/swift-ios-skills": true,
+    "ios-ai-ml-skills@dpearson2699/swift-ios-skills": true,
+    "ios-engineering-skills@dpearson2699/swift-ios-skills": true,
+    "ios-hardware-skills@dpearson2699/swift-ios-skills": true,
+    "ios-platform-skills@dpearson2699/swift-ios-skills": true,
+    "all-ios-skills@dpearson2699/swift-ios-skills": true
   }
 }
