@@ -65,3 +65,6 @@ Package.resolved
 .windsurf/
 .zencoder/
 .playwright-cli/
+
+# Clawpatch local review state
+.clawpatch/
