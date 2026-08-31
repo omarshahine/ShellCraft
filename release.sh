@@ -19,6 +19,10 @@ TEAM_ID="N9DRSTM2U6"
 NOTARY_PROFILE="ShellCraft"
 EXPORT_OPTIONS="ExportOptions.plist"
 RELEASES_DIR="Releases"
+SPARKLE_VERSION="2.9.6"
+SPARKLE_TOOLS_DIR="${HOME}/.cache/sparkle/${SPARKLE_VERSION}"
+APPCAST_PATH="${RELEASES_DIR}/appcast.xml"
+FEED_URL="https://github.com/omarshahine/ShellCraft/releases/latest/download/appcast.xml"
 BUILD_DIR="build"
 ARCHIVE_PATH="${BUILD_DIR}/${SCHEME}.xcarchive"
 EXPORT_PATH="${BUILD_DIR}/export"
@@ -145,6 +149,20 @@ preflight_checks() {
     else
         warn "Skipping notarization check (--skip-notarize)"
     fi
+
+    # Sparkle signing key. Checked here so a missing key fails in seconds
+    # rather than after a full archive-and-notarize cycle.
+    if [[ -z "${SPARKLE_PRIVATE_KEY:-}" ]]; then
+        error "SPARKLE_PRIVATE_KEY is not set"
+        echo "  Every published build has to be signed with the EdDSA key whose"
+        echo "  public half is baked into ShellCraft/Info.plist, or installed"
+        echo "  copies will reject the update."
+        echo ""
+        echo "  It lives in ~/.secrets-macbook-pro.env — open a new shell, or:"
+        echo "  source ~/.secrets-macbook-pro.env"
+        exit 1
+    fi
+    success "Sparkle signing key present"
 
     # Git state
     if [[ -n "$(git status --porcelain)" ]]; then
@@ -402,6 +420,79 @@ package() {
     RELEASE_ZIP_PATH="$release_zip"
 }
 
+# ─── Step 8b: Sign for Sparkle and Build the Appcast ───────────────────────────
+
+ensure_sparkle_tools() {
+    if [[ -x "${SPARKLE_TOOLS_DIR}/bin/sign_update" ]]; then
+        return
+    fi
+    info "Fetching Sparkle ${SPARKLE_VERSION} tools..."
+    mkdir -p "${SPARKLE_TOOLS_DIR}"
+    local tarball="${SPARKLE_TOOLS_DIR}/sparkle.tar.xz"
+    curl -fsSL -o "$tarball" \
+        "https://github.com/sparkle-project/Sparkle/releases/download/${SPARKLE_VERSION}/Sparkle-${SPARKLE_VERSION}.tar.xz"
+    tar xf "$tarball" -C "${SPARKLE_TOOLS_DIR}"
+    success "Sparkle tools cached in ${SPARKLE_TOOLS_DIR}"
+}
+
+sign_and_appcast() {
+    header "Sparkle Signature & Appcast"
+
+    ensure_sparkle_tools
+
+    # sign_update reads the key from stdin, so it never reaches the process
+    # table and never touches the login keychain.
+    local signature
+    signature=$(printf '%s' "${SPARKLE_PRIVATE_KEY}" \
+        | "${SPARKLE_TOOLS_DIR}/bin/sign_update" -f - -p "${RELEASE_ZIP_PATH}")
+    if [[ -z "$signature" ]]; then
+        error "Sparkle signing produced no signature"
+        exit 1
+    fi
+    success "Signed ${RELEASE_ZIP_PATH##*/}"
+
+    local length pubdate download_url notes_url
+    length=$(stat -f%z "${RELEASE_ZIP_PATH}")
+    pubdate=$(LC_ALL=C date -u "+%a, %d %b %Y %H:%M:%S +0000")
+    download_url="https://github.com/omarshahine/ShellCraft/releases/download/v${NEW_VERSION}/${RELEASE_ZIP_PATH##*/}"
+    notes_url="https://github.com/omarshahine/ShellCraft/releases/tag/v${NEW_VERSION}"
+
+    # A single-item appcast. Sparkle only ever needs the newest build it should
+    # offer, and keeping one item means the feed cannot drift out of step with
+    # what the release actually shipped.
+    cat > "${APPCAST_PATH}" <<APPCAST
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+    <channel>
+        <title>ShellCraft</title>
+        <link>${FEED_URL}</link>
+        <description>Updates for ShellCraft</description>
+        <language>en</language>
+        <item>
+            <title>${NEW_VERSION}</title>
+            <pubDate>${pubdate}</pubDate>
+            <sparkle:version>${NEW_BUILD}</sparkle:version>
+            <sparkle:shortVersionString>${NEW_VERSION}</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>${notes_url}</sparkle:releaseNotesLink>
+            <enclosure url="${download_url}"
+                       length="${length}"
+                       type="application/octet-stream"
+                       sparkle:edSignature="${signature}" />
+        </item>
+    </channel>
+</rss>
+APPCAST
+
+    # Prove the feed parses before it is published; a malformed appcast silently
+    # stops every installed copy from ever seeing another update.
+    if ! xmllint --noout "${APPCAST_PATH}" 2>/dev/null; then
+        error "Generated appcast is not well-formed XML"
+        exit 1
+    fi
+    success "Appcast written and validated: ${APPCAST_PATH}"
+}
+
 # ─── Step 9: Commit and Tag ────────────────────────────────────────────────────
 
 commit_and_tag() {
@@ -436,7 +527,7 @@ create_release() {
 
     info "Creating release v${NEW_VERSION} on GitHub..."
 
-    gh release create "v${NEW_VERSION}" "${RELEASE_ZIP_PATH}" \
+    gh release create "v${NEW_VERSION}" "${RELEASE_ZIP_PATH}" "${APPCAST_PATH}" \
         --title "ShellCraft v${NEW_VERSION}" \
         --generate-notes \
         --notes-start-tag "$(git tag --sort=-v:refname | head -2 | tail -1 2>/dev/null || echo "")" \
@@ -469,6 +560,7 @@ main() {
     export_archive
     notarize
     package
+    sign_and_appcast
     commit_and_tag
     create_release
 

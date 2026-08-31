@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	  Base Info.plist. GENERATE_INFOPLIST_FILE is still YES, so Xcode merges its
+	  generated keys (bundle name, version, category, …) on top of this file.
+
+	  These three keys have to live here rather than in INFOPLIST_KEY_ build
+	  settings: Xcode only honours INFOPLIST_KEY_* for keys it knows about, and
+	  silently drops anything else. Setting them that way produced an app whose
+	  Info.plist contained no SUFeedURL and no SUPublicEDKey at all, which
+	  Sparkle would have failed on at runtime with nothing to point at.
+	-->
+	<key>SUFeedURL</key>
+	<string>https://github.com/omarshahine/ShellCraft/releases/latest/download/appcast.xml</string>
+	<!-- Public half of the EdDSA signing key. The private half is the
+	     SPARKLE_PRIVATE_KEY repository secret. -->
+	<key>SUPublicEDKey</key>
+	<string>GXuaQ9IHuYP1B0jZK2ov1USNjcwqG0rKSNvTf2SqP5E=</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+</dict>
+</plist>

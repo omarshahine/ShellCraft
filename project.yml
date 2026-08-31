@@ -8,6 +8,10 @@ options:
   groupSortPosition: top
   createIntermediateGroups: true
   defaultConfig: Debug
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    from: "2.8.1"
 settings:
   base:
     SWIFT_VERSION: "6.0"
@@ -40,6 +44,13 @@ targets:
         INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.developer-tools"
         ASSETCATALOG_COMPILER_APPICON_NAME: ShellCraft
         INFOPLIST_KEY_CFBundleDisplayName: ShellCraft
+        # Sparkle's keys live in ShellCraft/Info.plist, which Xcode merges its
+        # generated keys on top of. They cannot be INFOPLIST_KEY_ settings:
+        # Xcode only honours those for keys it recognises and drops the rest
+        # without warning.
+        INFOPLIST_FILE: ShellCraft/Info.plist
+    dependencies:
+      - package: Sparkle
     entitlements:
       path: ShellCraft/ShellCraft.entitlements
   ShellCraftTests:

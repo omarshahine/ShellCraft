@@ -32,7 +32,10 @@ Releases/
 .build/
 Packages/
 Package.pins
-Package.resolved
+# Package.resolved is deliberately tracked. ShellCraft is an application,
+# not a library, and it now embeds Sparkle -- the framework that installs
+# updates on users' machines. Leaving the resolution floating meant a
+# release could ship a different Sparkle than the one that was tested.
 
 
 # AI coding tool directories

@@ -94,8 +94,10 @@
 		ADCBE14F63C7F6959D4099E4 /* ImportExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122D2F205CCF2B525AD162C4 /* ImportExportService.swift */; };
 		AEFA1E4C6401AC5D58191875 /* GhosttyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145026CAD87429CF24AFA72A /* GhosttyViewModel.swift */; };
 		B55866C05019D71C4B3B1E64 /* ShellFunctionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B97FEF32798774FA107E744 /* ShellFunctionsView.swift */; };
+		C0FF119EFD8222A72F39DEF5 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = C5F5677FBE774A5ABF24BCE7 /* Sparkle */; };
 		C3961BB2047A44281387DBDD /* OhMyZshPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62D601C0E6615F9F1E2B90 /* OhMyZshPlugin.swift */; };
 		C9B484312653B7326108C226 /* ClaudePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FA862D1F23B98EBCDABD4 /* ClaudePlugin.swift */; };
+		C9D8F3BD72F441CC34C6AF66 /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBDE8686F1A0512A79FD5 /* CheckForUpdatesView.swift */; };
 		CA84CA22ED138924BA8B4671 /* OhMyZshSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55BA173ECF4703EB8128D05 /* OhMyZshSetting.swift */; };
 		CB2D4A8536D8054F096392ED /* KeychainSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E652EBFFF942C18E2FA9B4 /* KeychainSecret.swift */; };
 		CBB822E8EBD798B6058083A9 /* GhosttyThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C82CC69D72378270D16DE /* GhosttyThemeService.swift */; };
@@ -180,6 +182,7 @@
 		5C2245C8447181FA14277987 /* PathManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathManagerViewModel.swift; sourceTree = "<group>"; };
 		60122B9089CACE9124C59AFD /* ClaudePermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudePermissionsViewModel.swift; sourceTree = "<group>"; };
 		62A8539854DE580F5C8B766D /* RevealInFinderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealInFinderButton.swift; sourceTree = "<group>"; };
+		66BD3B415DD0107485E7093B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		681F03E5192EBE79F91AFFD0 /* GhosttyThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyThemeView.swift; sourceTree = "<group>"; };
 		690152ADE458DCC1D0FB5599 /* GhosttyGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhosttyGeneralView.swift; sourceTree = "<group>"; };
 		69595855D46D72D7A15B709D /* ShellAliasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellAliasesView.swift; sourceTree = "<group>"; };
@@ -211,6 +214,7 @@
 		AAB04E37227E302F1C6B8125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABA4189BE71AA511A56D0884 /* ShellCraft.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = ShellCraft.icon; sourceTree = "<group>"; };
 		ABCA00A88EB2B540D7A8C090 /* OhMyZshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhMyZshService.swift; sourceTree = "<group>"; };
+		ABCFBDE8686F1A0512A79FD5 /* CheckForUpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesView.swift; sourceTree = "<group>"; };
 		B4FF327F73F0846E416ED845 /* PasswordSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSheet.swift; sourceTree = "<group>"; };
 		B74FA53E1723D0FE659BC032 /* ShellCraft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShellCraft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC144F93C720846AF28EBEA9 /* FunctionEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionEditorSheet.swift; sourceTree = "<group>"; };
@@ -251,6 +255,17 @@
 		FE5CCEC82A139BB079960379 /* SSHHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHHost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		4AFD14DEB874C0D22C236AD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0FF119EFD8222A72F39DEF5 /* Sparkle in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		0FCD02C4AD128BB91FF63CD9 = {
 			isa = PBXGroup;
@@ -273,6 +288,7 @@
 		339A2B1B46A51574CC13E3A6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				ABCFBDE8686F1A0512A79FD5 /* CheckForUpdatesView.swift */,
 				2ACF420627CC5D323D0F4D76 /* CodeEditorView.swift */,
 				0DDFE0E87AFE1BAC713FDF96 /* ImportConfirmationSheet.swift */,
 				FB01ECCF4CF028C965E1DC77 /* ImportExportToolbar.swift */,
@@ -537,6 +553,7 @@
 				4D99EF5F33819F207A92479D /* Utilities */,
 				5F43B2F63837FE530A749BD9 /* ViewModels */,
 				3DBC7E9C9AEE9C5499208746 /* Views */,
+				66BD3B415DD0107485E7093B /* Info.plist */,
 				C47635C7E84CDE6BF53D29B7 /* ShellCraft.entitlements */,
 				ABA4189BE71AA511A56D0884 /* ShellCraft.icon */,
 			);
@@ -575,6 +592,7 @@
 			buildPhases = (
 				FCCEE7E1735A0536C48AB9D9 /* Sources */,
 				01B53F523AE90A167555D4B1 /* Resources */,
+				4AFD14DEB874C0D22C236AD9 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -582,6 +600,7 @@
 			);
 			name = ShellCraft;
 			packageProductDependencies = (
+				C5F5677FBE774A5ABF24BCE7 /* Sparkle */,
 			);
 			productName = ShellCraft;
 			productReference = B74FA53E1723D0FE659BC032 /* ShellCraft.app */;
@@ -621,7 +640,6 @@
 				};
 			};
 			buildConfigurationList = 61077A9ABA9F457CDB48396B /* Build configuration list for PBXProject "ShellCraft" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -630,7 +648,11 @@
 			);
 			mainGroup = 0FCD02C4AD128BB91FF63CD9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FD5A6F1A3D51EB46B463570F /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			preferredProjectObjectVersion = 77;
+			productRefGroup = 866D56E2E5C2F0AC279401E3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -670,6 +692,7 @@
 				AA9F61885DEF92CCBA723BA8 /* AliasEditorSheet.swift in Sources */,
 				085D987ECADC1509C879C8C7 /* AppState.swift in Sources */,
 				95C1DF40140268040B170B89 /* BackupService.swift in Sources */,
+				C9D8F3BD72F441CC34C6AF66 /* CheckForUpdatesView.swift in Sources */,
 				D47AD7B74E1DA6449272B37C /* ClaudeGeneralView.swift in Sources */,
 				093ED6A231501A6CC8B40DD6 /* ClaudeHook.swift in Sources */,
 				1243384588903E1340109532 /* ClaudeHooksView.swift in Sources */,
@@ -874,6 +897,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N9DRSTM2U6;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShellCraft/Info.plist;
 				INFOPLIST_GENERATION_MODE = GeneratedByXcode;
 				INFOPLIST_KEY_CFBundleDisplayName = ShellCraft;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
@@ -980,6 +1004,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N9DRSTM2U6;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShellCraft/Info.plist;
 				INFOPLIST_GENERATION_MODE = GeneratedByXcode;
 				INFOPLIST_KEY_CFBundleDisplayName = ShellCraft;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
@@ -1025,6 +1050,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FD5A6F1A3D51EB46B463570F /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C5F5677FBE774A5ABF24BCE7 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD5A6F1A3D51EB46B463570F /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0EE26AFE3AB31906F3CFCC65 /* Project object */;
 }
