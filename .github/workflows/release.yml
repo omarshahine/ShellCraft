@@ -23,7 +23,7 @@ jobs:
   release:
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
 
       - name: Resolve version from tag
         id: version
@@ -166,7 +166,7 @@ jobs:
           xmllint --noout Releases/appcast.xml
 
       - name: Publish release
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64  # v3
         with:
           files: |
             ${{ steps.package.outputs.zip }}
