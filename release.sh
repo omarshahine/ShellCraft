@@ -533,7 +533,10 @@ EOF
     success "Committed version bump"
 
     info "Creating tag v${NEW_VERSION}..."
-    git tag "v${NEW_VERSION}"
+    # Annotated, with a message: the global gitconfig sets tag.gpgsign, which
+    # turns a lightweight `git tag` into a signed annotated tag and then dies
+    # with "fatal: no tag message?" when there is no TTY (v1.1, 2026-09-05).
+    git tag -a "v${NEW_VERSION}" -m "${SCHEME} v${NEW_VERSION}"
     success "Tag v${NEW_VERSION} created"
 
     info "Pushing to origin..."
