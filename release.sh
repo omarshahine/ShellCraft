@@ -17,6 +17,12 @@ PROJECT="ShellCraft.xcodeproj"
 PROJECT_YML="project.yml"
 TEAM_ID="N9DRSTM2U6"
 NOTARY_PROFILE="ShellCraft"
+# Notarization auth, resolved in preflight. Preferred: the App Store Connect
+# API key already in ~/.secrets-macbook-pro.env (APP_STORE_CONNECT_API_KEY_PATH,
+# _KEY_ID, _ISSUER_ID), which needs no Apple ID password and nothing in the
+# macOS Keychain. Fallback: the notarytool keychain profile above, which only
+# exists on a Mac where `notarytool store-credentials` was run once.
+NOTARY_ARGS=()
 EXPORT_OPTIONS="ExportOptions.plist"
 RELEASES_DIR="Releases"
 SPARKLE_VERSION="2.9.6"
@@ -129,9 +135,21 @@ preflight_checks() {
         echo "  https://developer.apple.com/account/resources/certificates/list"
     fi
 
-    # Notarytool keychain profile
+    # Notarytool credentials: ASC API key first, keychain profile second.
     if [[ "${SKIP_NOTARIZE}" == false ]]; then
-        if ! xcrun notarytool history --keychain-profile "${NOTARY_PROFILE}" 2>/dev/null | head -1 | grep -q "Successfully"; then
+        if [[ -n "${APP_STORE_CONNECT_API_KEY_PATH:-}" && -n "${APP_STORE_CONNECT_API_KEY_ID:-}" \
+              && -n "${APP_STORE_CONNECT_API_ISSUER_ID:-}" && -f "${APP_STORE_CONNECT_API_KEY_PATH}" ]]; then
+            NOTARY_ARGS=(--key "${APP_STORE_CONNECT_API_KEY_PATH}" \
+                         --key-id "${APP_STORE_CONNECT_API_KEY_ID}" \
+                         --issuer "${APP_STORE_CONNECT_API_ISSUER_ID}")
+            if xcrun notarytool history "${NOTARY_ARGS[@]}" >/dev/null 2>&1; then
+                success "Notarytool: App Store Connect API key (${APP_STORE_CONNECT_API_KEY_ID})"
+            else
+                error "App Store Connect API key is set but notarytool rejected it"
+                echo "  Check that the key has the Developer role or notarization access."
+                exit 1
+            fi
+        elif ! xcrun notarytool history --keychain-profile "${NOTARY_PROFILE}" 2>/dev/null | head -1 | grep -q "Successfully"; then
             # Try another way to check — the profile might exist but have no history
             if ! security find-generic-password -l "com.apple.gk.notary-${NOTARY_PROFILE}" &>/dev/null 2>&1; then
                 warn "Notarytool keychain profile '${NOTARY_PROFILE}' not found"
@@ -144,8 +162,12 @@ preflight_checks() {
                 echo "  Or use --skip-notarize to skip notarization."
                 exit 1
             fi
+            NOTARY_ARGS=(--keychain-profile "${NOTARY_PROFILE}")
+            success "Notarytool keychain profile '${NOTARY_PROFILE}' found"
+        else
+            NOTARY_ARGS=(--keychain-profile "${NOTARY_PROFILE}")
+            success "Notarytool keychain profile '${NOTARY_PROFILE}' found"
         fi
-        success "Notarytool keychain profile '${NOTARY_PROFILE}' found"
     else
         warn "Skipping notarization check (--skip-notarize)"
     fi
@@ -369,7 +391,7 @@ notarize() {
     info "Submitting to Apple notary service (this may take a few minutes)..."
     local submit_output
     submit_output=$(xcrun notarytool submit "$zip_path" \
-        --keychain-profile "${NOTARY_PROFILE}" \
+        "${NOTARY_ARGS[@]}" \
         --wait \
         2>&1)
     echo "$submit_output"
@@ -385,7 +407,7 @@ notarize() {
             echo ""
             info "Fetching notarization log..."
             xcrun notarytool log "$submission_id" \
-                --keychain-profile "${NOTARY_PROFILE}" \
+                "${NOTARY_ARGS[@]}" \
                 2>&1 || true
         fi
         exit 1
@@ -505,7 +527,7 @@ commit_and_tag() {
     git commit -m "$(cat <<EOF
 Bump version to ${NEW_VERSION} (build ${NEW_BUILD})
 
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+Co-Authored-By: Claude <noreply@anthropic.com>
 EOF
     )"
     success "Committed version bump"
