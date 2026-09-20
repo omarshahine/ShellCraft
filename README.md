@@ -71,7 +71,7 @@ XcodeGen doesn't understand `.icon` bundles (Icon Composer format), so this sed 
 - **Round-trip safe writes** — config files are parsed into memory; only targeted lines are modified on save
 - **XcodeGen** — `project.yml` is the source of truth, never edit `.xcodeproj` directly
 
-See [CLAUDE.md](CLAUDE.md) for detailed architecture docs, conventions, and contributor instructions.
+See [AGENTS.md](AGENTS.md) for detailed architecture docs, conventions, and contributor instructions.
 
 ## Key Design Decisions
 
