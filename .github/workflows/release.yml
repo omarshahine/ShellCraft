@@ -21,7 +21,8 @@ env:
 
 jobs:
   release:
-    runs-on: macos-15
+    # macos-26 carries Xcode 26.x only; Xcode 27 lives on the xcode-27 image.
+    runs-on: xcode-27
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
 
@@ -40,8 +41,25 @@ jobs:
           fi
           echo "build=$(grep 'CURRENT_PROJECT_VERSION:' project.yml | head -1 | sed 's/.*: *\([0-9]*\)/\1/')" >> "$GITHUB_OUTPUT"
 
+      # Select the Xcode named in .xcode-version, matched on the bundle's own
+      # version since runner app names vary (27.1 ships as
+      # Xcode_27.1_Release_Candidate.app). A release must not silently fall
+      # back to whatever the image defaults to, so a miss fails the job.
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_26.app
+        run: |
+          PIN="$(tr -d '[:space:]' < .xcode-version)"
+          for app in /Applications/Xcode*.app; do
+            [[ -d "$app" ]] || continue
+            V="$(defaults read "$app/Contents/Info.plist" CFBundleShortVersionString 2>/dev/null || true)"
+            if [[ "$V" == "$PIN" ]]; then
+              sudo xcode-select -s "$app/Contents/Developer"
+              xcodebuild -version
+              exit 0
+            fi
+          done
+          echo "::error::.xcode-version pins Xcode $PIN, not present on this runner."
+          ls -d /Applications/Xcode*.app
+          exit 1
 
       - name: Install XcodeGen
         run: brew install xcodegen

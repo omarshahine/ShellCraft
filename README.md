@@ -44,7 +44,7 @@ The core sections (Aliases, Functions, PATH, Environment, SSH, Secrets) work wit
 ### Prerequisites
 
 - macOS 26.0 (Tahoe) or later
-- Xcode 17+
+- Xcode 27.1 (pinned in `.xcode-version`)
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`)
 
 ### Build & Run
