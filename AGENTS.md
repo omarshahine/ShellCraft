@@ -77,12 +77,24 @@ settings:
     ASSETCATALOG_COMPILER_APPICON_NAME: ShellCraft
 ```
 
-**Post-generate fix** (required after every `xcodegen generate`):
-```bash
-sed -i '' 's|lastKnownFileType = folder; name = ShellCraft.icon; path = ShellCraft/ShellCraft.icon; sourceTree = SOURCE_ROOT;|lastKnownFileType = folder.iconcomposer.icon; path = ShellCraft.icon; sourceTree = "<group>";|' ShellCraft.xcodeproj/project.pbxproj
-```
+**Post-generation finalizer:** `options.postGenCommand` runs
+`scripts/finalize-project.sh`. It patches the Icon Composer PBX reference before
+calling Apple's converter. Release and CI generation use this same hook; do not
+apply the old `sed` command after generation because the PBX file has become
+`project.xcproj`.
 
-Without this sed fix, the icon file type is wrong and the app icon won't appear.
+XcodeGen checks converter availability before generation, then runs
+`scripts/finalize-project.sh` after generation. The script uses
+Apple's `xcodebuild -convert-project 'Xcode Project'` to write
+`project.xcproj` inside the existing `.xcodeproj` bundle. Generation requires an
+installed Xcode 27.2 or later; it uses `DEVELOPER_DIR` when suitable, otherwise
+finds a compatible Xcode in `/Applications`. This selection applies only to the
+conversion process and does not change the selected build toolchain. Set
+`XCODE_PROJECT_CONVERTER_DIR` to require a specific converter without discovery.
+If conversion fails, the finalizer restores the previous JSON (or the initial
+PBX project) and retains failed output for diagnosis. Xcode 27
+and later can read the generated JSON project. Do not run a PBX-only patch after
+the finalizer.
 
 ## Architecture
 

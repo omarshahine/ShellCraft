@@ -44,7 +44,8 @@ The core sections (Aliases, Functions, PATH, Environment, SSH, Secrets) work wit
 ### Prerequisites
 
 - macOS 26.0 (Tahoe) or later
-- Xcode 27.1 (pinned in `.xcode-version`)
+- Xcode 27.1 (pinned build toolchain in `.xcode-version`)
+- Xcode 27.2 or later for JSON project generation
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`)
 
 ### Build & Run
@@ -56,13 +57,10 @@ xcodebuild -project ShellCraft.xcodeproj -scheme ShellCraft -configuration Debug
 open ~/Library/Developer/Xcode/DerivedData/ShellCraft/Build/Products/Debug/ShellCraft.app
 ```
 
-**Important:** After running `xcodegen generate`, apply the icon fix:
-
-```bash
-sed -i '' 's|lastKnownFileType = folder; name = ShellCraft.icon; path = ShellCraft/ShellCraft.icon; sourceTree = SOURCE_ROOT;|lastKnownFileType = folder.iconcomposer.icon; path = ShellCraft.icon; sourceTree = "<group>";|' ShellCraft.xcodeproj/project.pbxproj
-```
-
-XcodeGen doesn't understand `.icon` bundles (Icon Composer format), so this sed command fixes the file type in the generated project.
+XcodeGen automatically fixes the Icon Composer reference before converting the
+project to `ShellCraft.xcodeproj/project.xcproj`. Install Xcode 27.2 or later for
+conversion alongside the pinned 27.1 build toolchain. The finalizer chooses the
+converter per process; it does not change `xcode-select` or `.xcode-version`.
 
 ## Architecture
 

@@ -297,10 +297,8 @@ regenerate_project() {
     info "Running xcodegen..."
     xcodegen generate --quiet
 
-    # Icon Composer sed fix (required — see AGENTS.md)
-    sed -i '' 's|lastKnownFileType = folder; name = ShellCraft.icon; path = ShellCraft/ShellCraft.icon; sourceTree = SOURCE_ROOT;|lastKnownFileType = folder.iconcomposer.icon; path = ShellCraft.icon; sourceTree = "<group>";|' "${PROJECT}/project.pbxproj"
 
-    success "Xcode project regenerated with icon fix"
+    success "JSON Xcode project regenerated with icon fix"
 }
 
 # ─── Step 5: Build Archive ─────────────────────────────────────────────────────

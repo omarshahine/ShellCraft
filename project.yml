@@ -1,5 +1,7 @@
 name: ShellCraft
 options:
+  preGenCommand: bash scripts/finalize-project.sh --check
+  postGenCommand: bash scripts/finalize-project.sh
   bundleIdPrefix: com.shahine
   deploymentTarget:
     macOS: "26.0"

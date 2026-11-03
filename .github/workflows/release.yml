@@ -64,12 +64,11 @@ jobs:
       - name: Install XcodeGen
         run: brew install xcodegen
 
+      # The finalizer uses installed Xcode 27.2+ only for JSON conversion;
+      # .xcode-version still controls the build toolchain.
       - name: Generate Xcode project
         run: |
           xcodegen generate --quiet
-          # Icon Composer folder reference: XcodeGen emits `folder`, Xcode needs
-          # `folder.iconcomposer.icon` or the app ships without its icon.
-          sed -i '' 's|lastKnownFileType = folder; name = ShellCraft.icon; path = ShellCraft/ShellCraft.icon; sourceTree = SOURCE_ROOT;|lastKnownFileType = folder.iconcomposer.icon; path = ShellCraft.icon; sourceTree = "<group>";|' "${PROJECT}/project.pbxproj"
 
       - name: Import Developer ID certificate
         env:
