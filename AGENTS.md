@@ -1,17 +1,16 @@
 # ShellCraft
 
+## Xcode tool routing
+
+Follow [the Xcode golden path](Documentation/Development/Xcode-Golden-Path.md) for stable toolchain selection, native MCP readiness, pinned XcodeBuildMCP capabilities, worktree paths, and the existing release route. Run `setup-xcode-mcp --check` first. Restart the agent client after changing MCP configuration. Configuration-only changes use parser, shell-syntax, and mocked toolchain checks; they do not require an app build or installation.
+
 macOS app for managing shell configuration through a native GUI.
 
 ## Build & Run
 
-```bash
-xcodegen generate                  # Regenerate .xcodeproj from project.yml
-xcodebuild -project ShellCraft.xcodeproj -scheme ShellCraft -configuration Debug \
-  -derivedDataPath ~/Library/Developer/Xcode/DerivedData/ShellCraft-btghkkwhgqrpkvcxxrffbfehbzie build
-open ~/Library/Developer/Xcode/DerivedData/ShellCraft-btghkkwhgqrpkvcxxrffbfehbzie/Build/Products/Debug/ShellCraft.app
-```
+Use native Xcode MCP first with the active worktree's `ShellCraft.xcodeproj`, scheme `ShellCraft`, and the Mac destination. If the required native capability is unavailable, report it and use the pinned XcodeBuildMCP route described in the golden path. Regenerate from `project.yml` when a source/target change needs XcodeGen.
 
-Always launch the app after a successful build.
+Always launch the app through the supported MCP runtime operation after a successful app build. Configuration-only validation does not build or launch the app.
 
 ## Release Process
 
@@ -27,10 +26,7 @@ Automated via `release.sh`. The script handles version bump, build, code signing
 
 ### Prerequisites (one-time setup)
 1. **Developer ID signing** — handled automatically via Xcode managed signing. If export fails, install a Developer ID Application certificate from [developer.apple.com](https://developer.apple.com/account/resources/certificates/list)
-2. **Notarytool keychain profile** — run:
-   ```bash
-   xcrun notarytool store-credentials "ShellCraft" --apple-id YOUR_APPLE_ID --team-id N9DRSTM2U6
-   ```
+2. **Notarization credentials**: preserve the existing supported credential route. Do not create or change Keychain secrets as part of tool configuration; report a missing credential as a release blocker.
 3. **GitHub CLI** — `brew install gh` and authenticate with `gh auth login`
 
 ### What the Script Does
@@ -185,7 +181,7 @@ Durable memory promoted from `~/.claude/projects/-Users-omarshahine-GitHub-Shell
 # ShellCraft Project Memory
 
 ## User Preferences
-- **Always launch the app after building** — run `open` on the built `.app` from DerivedData after every successful `xcodebuild`
+- **Always launch the app after building**: use the supported MCP combined build-and-run or runtime launch operation. Configuration-only validation does not build or launch the app.
 
 ## Project Details
 - macOS 26.0 (Tahoe) deployment target, Swift 6 strict concurrency

@@ -10,6 +10,9 @@
 
 set -euo pipefail
 
+# Use stable Xcode by default; explicit per-run overrides still win.
+export DEVELOPER_DIR="${DEVELOPER_DIR:-/Applications/Xcode.app/Contents/Developer}"
+
 # ─── Configuration ──────────────────────────────────────────────────────────────
 
 SCHEME="ShellCraft"
