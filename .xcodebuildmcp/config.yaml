@@ -1,0 +1,10 @@
+schemaVersion: 1
+enabledWorkflows:
+- macos
+experimentalWorkflowDiscovery: false
+incrementalBuildsEnabled: false
+sessionDefaults:
+  projectPath: ./ShellCraft.xcodeproj
+  scheme: ShellCraft
+  configuration: Debug
+  platform: macOS
