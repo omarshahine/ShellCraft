@@ -181,7 +181,7 @@ Durable memory promoted from `~/.claude/projects/-Users-omarshahine-GitHub-Shell
 # ShellCraft Project Memory
 
 ## User Preferences
-- **Always launch the app after building** — run `open` on the built `.app` from DerivedData after every successful `xcodebuild`
+- **Always launch the app after building**: use the supported MCP combined build-and-run or runtime launch operation. Configuration-only validation does not build or launch the app.
 
 ## Project Details
 - macOS 26.0 (Tahoe) deployment target, Swift 6 strict concurrency
